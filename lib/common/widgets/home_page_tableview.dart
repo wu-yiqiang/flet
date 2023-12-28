@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'package:flet/common/const.dart';
 class HomePageTabView extends StatefulWidget {
   final List<String> tabIcons;
   final Color? activeColor;
@@ -15,7 +15,7 @@ class HomePageTabView extends StatefulWidget {
       {Key? key,
       required this.tabIcons,
       this.activeColor = Colors.blue,
-      this.bgColor = Colors.white,
+      this.bgColor = tabViewColor,
       this.onPress,
       this.selectIndex = 0})
       : assert(tabIcons!.length <= 5),

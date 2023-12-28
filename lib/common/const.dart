@@ -6,6 +6,7 @@ final Color textGreyColor = Color.fromRGBO(151, 158, 168, 1);
 final Color commonGreenColor = Color.fromRGBO(195, 221, 83, 1);
 final Color commonBlueColor = Color(0xFF1E88E5);
 final Color weatherAppbarColor = Color.fromRGBO(28, 41, 51, 0.9);
+const Color tabViewColor = Color.fromRGBO(255, 255, 255, 1);
 final double appbarHeight = 35.0;
 final double bottomTabViewHeight = 55.0;
 

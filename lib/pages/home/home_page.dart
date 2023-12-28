@@ -14,8 +14,7 @@ class HomePage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
-
+      backgroundColor: tabViewColor,
       appBar: AppBar(
         toolbarHeight: appbarHeight,
         leading: SvgPicture.asset("assets/icons/common/menu.svg", color: Colors.white),
