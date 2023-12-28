@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flet/modules/illustration.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flet/common/config.dart';
+import 'package:flet/common/const.dart';
 import 'package:flet/routes/routes.dart';
 class SplashPage extends StatelessWidget {
   @override

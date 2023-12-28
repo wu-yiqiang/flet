@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-// import 'package:quit/common/config.dart';
+// import 'package:quit/common/const.dart';
 import 'package:flutter_svg/svg.dart';
 
 enum NavigatorBarCloseType { close, back }

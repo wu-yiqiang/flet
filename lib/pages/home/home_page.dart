@@ -6,14 +6,21 @@ import 'package:flet/routes/routes.dart';
 import 'package:flet/pages/user/user_page.dart';
 import 'package:flet/pages/weather/weather_page.dart';
 import 'package:flet/pages/news/news_page.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flet/common/const.dart';
 class HomePage extends StatelessWidget {
-  final double bottomTabViewHeight = 70.0;
+
   final HomeConstroller homeConstroller = Get.find<HomeConstroller>();
 
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.green,
+
+      appBar: AppBar(
+        toolbarHeight: appbarHeight,
+        leading: SvgPicture.asset("assets/icons/common/menu.svg", color: Colors.white),
+        backgroundColor: weatherAppbarColor,
+      ),
       body: SafeArea(
         child: Stack(
           children: [
@@ -25,31 +32,8 @@ class HomePage extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: double.infinity,
-                  padding: EdgeInsets.only(top: 8, left: 8, right: 8),
-                  alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            // width: double.infinity,
-                            margin: EdgeInsets.only(bottom: 8),
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5.0)),
-                            ),
-                            // child: HomeSwipper(),
-                          )
-                        ],
-                      ),
-                      Container(
-                        height: 400,
-                        // child: HomeList(),
-                        child: WeatherPage(),
-                      )
-                    ],
-                  ),
+                  // alignment: Alignment.center,
+                  child: WeatherPage(),
                 ),
                 Container(
                   color: Colors.red,

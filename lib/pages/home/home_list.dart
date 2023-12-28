@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // import 'package:quit/pages/home/home_controller.dart';
 // import 'package:get/get.dart';
-// import '../../common/config.dart';
+// import '../../common/const.dart';
 // import 'package:quit/common/widgets/home_page_tableview.dart';
 // import '../../routes/app_routes.dart';
 

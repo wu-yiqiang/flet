@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:flet/common/config.dart';
+import 'package:flet/common/const.dart';
 import 'package:flet/modules/illustration.dart';
 class SplashController extends GetxController {
 
