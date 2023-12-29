@@ -15,7 +15,7 @@ class ServiceItem extends StatelessWidget {
         children: [
           Text(
             item["title"]!,
-            style: TextStyle(fontSize: 24, color: Colors.grey),
+            style: TextStyle(fontSize: 16, color: Colors.grey),
           ),
           if (item["title"] == "空气质量")
             Row(
@@ -23,7 +23,7 @@ class ServiceItem extends StatelessWidget {
                 Container(
                   height: 10,
                   width: 10,
-                  margin:  EdgeInsets.only( right: 10),
+                  margin:  EdgeInsets.only( right: 6),
                   decoration: BoxDecoration(
                     color: Colors.green,
                     borderRadius: BorderRadius.all(Radius.circular(5))
@@ -32,8 +32,9 @@ class ServiceItem extends StatelessWidget {
                 Text(
                   item["value"]!,
                   style: TextStyle(
-                    fontSize: 26,
+                    fontSize: 16,
                     color: Colors.white,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ],
@@ -42,8 +43,9 @@ class ServiceItem extends StatelessWidget {
             Text(
               item["value"]!,
               style: TextStyle(
-                fontSize: 26,
+                fontSize: 16,
                 color: Colors.white,
+                fontWeight: FontWeight.w700,
               ),
             ),
         ],

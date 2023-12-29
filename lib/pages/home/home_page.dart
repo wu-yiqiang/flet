@@ -118,7 +118,7 @@ class SwitchWidgetState extends State<Switch> {
                   },
                   radius: 0.0,
                   highlightColor: Colors.transparent,
-                  child: Text('℉', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700,color: !isCel ? activeFontColor :  fontColor),textAlign: TextAlign.center,),
+                  child: Text('℉', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700,color: !isCel ? activeFontColor :  fontColor),textAlign: TextAlign.center,),
                 ),
               )
           ),
@@ -136,7 +136,7 @@ class SwitchWidgetState extends State<Switch> {
                   },
                   radius: 0.0,
                   highlightColor: Colors.transparent,
-                  child: Text('℃', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700,color: isCel ? activeFontColor :  fontColor),textAlign: TextAlign.center,),
+                  child: Text('℃', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700,color: isCel ? activeFontColor :  fontColor),textAlign: TextAlign.center,),
                 ),
               )
           ),

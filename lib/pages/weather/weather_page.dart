@@ -31,7 +31,7 @@ class Location extends StatelessWidget {
       Text(
         "上海市，静安区",
         style: TextStyle(
-            fontSize: 22, color: Colors.white, fontWeight: FontWeight.w700),
+            fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),
       )
     ]);
   }
@@ -43,7 +43,7 @@ class Time extends StatelessWidget {
     return Row(children: [
       Text(
         "20:08",
-        style: TextStyle(fontSize: 20, color: Colors.white),
+        style: TextStyle(fontSize: 16, color: Colors.white),
       )
     ]);
   }
@@ -71,14 +71,14 @@ class WeatherInfo extends StatelessWidget {
                         Text(
                           "12",
                           style: TextStyle(
-                              fontSize: 60,
+                              fontSize: 40,
                               color: Colors.white,
                               fontWeight: FontWeight.w700),
                         ),
                         Text(
                           "°C",
                           style: TextStyle(
-                              fontSize: 60,
+                              fontSize: 40,
                               color: Colors.white,
                               fontWeight: FontWeight.w700),
                         ),
@@ -98,12 +98,12 @@ class WeatherInfo extends StatelessWidget {
           Text(
             "晴朗",
             style: TextStyle(
-                fontSize: 30, color: Colors.white, fontWeight: FontWeight.w700),
+                fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),
           ),
           Text(
             "体感温度 11°",
             style: TextStyle(
-                fontSize: 20, color: Colors.white, fontWeight: FontWeight.w700),
+                fontSize: 16, color: Colors.white, fontWeight: FontWeight.w700),
           ),
         ],
       ),
