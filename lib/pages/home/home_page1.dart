@@ -12,36 +12,46 @@ class HomePage extends StatelessWidget {
   final HomeConstroller homeConstroller = Get.find<HomeConstroller>();
   num currentPage = 0;
   Widget build(BuildContext context) {
-    return Material(
+    return Scaffold(
+      backgroundColor: tabViewColor,
+      appBar: AppBar(
+        toolbarHeight: appbarHeight,
+        title: SvgPicture.asset("assets/icons/common/micro.svg"),
+        leading: SvgPicture.asset("assets/icons/common/menu.svg",
+            color: Colors.white),
+        backgroundColor: weatherAppbarColor,
+        actions: [Switch()],
+      ),
+      body: SafeArea(
         child: Stack(
           children: [
             Positioned(
                 child: PageView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  controller: homeConstroller.pageController,
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      height: double.infinity,
-                      // alignment: Alignment.center,
-                      child: WeatherPage(),
-                    ),
-                    Container(
-                      // color: Colors.red,
-                      width: double.infinity,
-                      height: double.infinity,
-                      alignment: Alignment.center,
-                      child: NewsPage(),
-                    ),
-                    Container(
-                      color: Colors.orange,
-                      width: double.infinity,
-                      height: double.infinity,
-                      alignment: Alignment.center,
-                      child: UserPage(),
-                    )
-                  ],
-                )),
+              physics: const NeverScrollableScrollPhysics(),
+              controller: homeConstroller.pageController,
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  // alignment: Alignment.center,
+                  child: WeatherPage(),
+                ),
+                Container(
+                  // color: Colors.red,
+                  width: double.infinity,
+                  height: double.infinity,
+                  alignment: Alignment.center,
+                  child: NewsPage(),
+                ),
+                Container(
+                  color: Colors.orange,
+                  width: double.infinity,
+                  height: double.infinity,
+                  alignment: Alignment.center,
+                  child: UserPage(),
+                )
+              ],
+            )),
             Positioned(
                 left: 0,
                 right: 0,
@@ -68,7 +78,8 @@ class HomePage extends StatelessWidget {
                 ))
           ],
         ),
-      );
+      ),
+    );
   }
 }
 
@@ -115,9 +126,9 @@ class SwitchWidgetState extends State<Switch> {
           ClipRRect(
               borderRadius: BorderRadius.only(topRight: Radius.circular(borderRadious), bottomRight: Radius.circular(borderRadious)),
               child: Container(
-                width: 36,
-                padding: EdgeInsets.all(3),
-                color: isCel ? activeBgcColor : bgcColor,
+                  width: 36,
+                  padding: EdgeInsets.all(3),
+                  color: isCel ? activeBgcColor : bgcColor,
                 child: InkWell(
                   onTap: () {
                     setState(() {

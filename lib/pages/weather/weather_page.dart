@@ -2,28 +2,100 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flet/modules/illustration.dart';
 import 'package:flet/pages/weather/ServiceItem.dart';
-
+import 'package:flet/common/const.dart';
 class WeatherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
-      decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/weather/CloudyNight.png"),
-              fit: BoxFit.cover)),
-      child: Column(children: <Widget>[
-        Location(),
-        Time(),
-        WeatherInfo(),
-        Expanded(
-          child: AirInfos(),
-        ),
-      ]),
+    return Scaffold(
+      backgroundColor: tabViewColor,
+      appBar: AppBar(
+        toolbarHeight: appbarHeight,
+        title: SvgPicture.asset("assets/icons/common/micro.svg"),
+        leading: SvgPicture.asset("assets/icons/common/menu.svg",
+            color: Colors.white),
+        backgroundColor: weatherAppbarColor,
+        actions: [Switch()],
+      ),
+      body: Container(
+        padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/weather/CloudyNight.png"),
+                fit: BoxFit.cover)),
+        child: Column(children: <Widget>[
+          Location(),
+          Time(),
+          WeatherInfo(),
+          Expanded(
+            child: AirInfos(),
+          ),
+        ]),
+      ),
     );
   }
 }
 
+class Switch extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return SwitchWidgetState();
+  }
+}
+
+class SwitchWidgetState extends State<Switch> {
+  bool isCel = true;
+  final Color activeBgcColor = Color.fromRGBO(255, 255, 255, 0.2);
+  final Color activeFontColor =  Color.fromRGBO(255, 255, 255, 1);
+  final Color bgcColor =  Color.fromRGBO(36, 36, 36, 0.5);
+  final Color fontColor =  Color.fromRGBO(255, 255, 255, 0.7);
+  final borderRadious = 4.0;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(right: 16),
+      child: Row(
+        children: [
+          ClipRRect(
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(borderRadious), bottomLeft: Radius.circular(borderRadious)),
+              child: Container(
+                width: 36,
+                padding: EdgeInsets.all(3),
+                color: !isCel ? activeBgcColor : bgcColor,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      isCel = false;
+                    });
+                  },
+                  radius: 0.0,
+                  highlightColor: Colors.transparent,
+                  child: Text('℉', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700,color: !isCel ? activeFontColor :  fontColor),textAlign: TextAlign.center,),
+                ),
+              )
+          ),
+          ClipRRect(
+              borderRadius: BorderRadius.only(topRight: Radius.circular(borderRadious), bottomRight: Radius.circular(borderRadious)),
+              child: Container(
+                width: 36,
+                padding: EdgeInsets.all(3),
+                color: isCel ? activeBgcColor : bgcColor,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      isCel = true;
+                    });
+                  },
+                  radius: 0.0,
+                  highlightColor: Colors.transparent,
+                  child: Text('℃', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700,color: isCel ? activeFontColor :  fontColor),textAlign: TextAlign.center,),
+                ),
+              )
+          ),
+        ],
+      ),
+    );
+  }
+}
 class Location extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

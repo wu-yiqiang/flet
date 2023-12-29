@@ -24,7 +24,7 @@ dev_dependencies:
 #  intl: 0.17.0
 #  auto_animated: any
 #  modal_bottom_sheet: ^3.0.0-pre
-#  card_swiper: ^3.0.0
+  card_swiper: ^3.0.0
 
 
 flutter:
