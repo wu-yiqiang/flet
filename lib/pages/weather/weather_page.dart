@@ -59,11 +59,11 @@ class WeatherInfo extends StatelessWidget {
               // margin: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 children: [
-                  // Image.asset(
-                  //   'assets/weather/ClearNight.svg',
-                  //   width: 50,
-                  // ),
-                  SvgPicture.asset("assets/weather/ClearNightV3.svg"),
+                  Image.asset(
+                    'assets/weather/ClearNight.png',
+                    width: 70,
+                  ),
+                  // SvgPicture.asset("assets/weather/ClearNightV3.svg"),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(

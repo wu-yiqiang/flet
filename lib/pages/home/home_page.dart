@@ -97,7 +97,7 @@ class SwitchWidgetState extends State<Switch> {
   final Color activeFontColor =  Color.fromRGBO(255, 255, 255, 1);
   final Color bgcColor =  Color.fromRGBO(36, 36, 36, 0.5);
   final Color fontColor =  Color.fromRGBO(255, 255, 255, 0.7);
-  final borderRadious = 2.0;
+  final borderRadious = 4.0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -107,7 +107,7 @@ class SwitchWidgetState extends State<Switch> {
           ClipRRect(
               borderRadius: BorderRadius.only(topLeft: Radius.circular(borderRadious), bottomLeft: Radius.circular(borderRadious)),
               child: Container(
-                width: 35,
+                width: 36,
                 padding: EdgeInsets.all(3),
                 color: !isCel ? activeBgcColor : bgcColor,
                 child: InkWell(
@@ -125,7 +125,7 @@ class SwitchWidgetState extends State<Switch> {
           ClipRRect(
               borderRadius: BorderRadius.only(topRight: Radius.circular(borderRadious), bottomRight: Radius.circular(borderRadious)),
               child: Container(
-                  width: 35,
+                  width: 36,
                   padding: EdgeInsets.all(3),
                   color: isCel ? activeBgcColor : bgcColor,
                 child: InkWell(
