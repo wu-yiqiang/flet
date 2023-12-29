@@ -7,7 +7,7 @@ class WeatherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+      padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
       decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/weather/CloudyNight.png"),
