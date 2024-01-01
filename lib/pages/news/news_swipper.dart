@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
-// import 'package:quit/common/config.dart';
 
 class NewsSwipper extends StatelessWidget {
   List<Map> Banners = [
@@ -16,6 +15,7 @@ class NewsSwipper extends StatelessWidget {
     var MySwiperWidget = ClipRRect(
       borderRadius: BorderRadius.circular(8.0),
       child: Swiper(
+
         itemBuilder: (BuildContext context, int index) {
           //每次循环遍历时，将i赋值给index
           return new Image.asset(
@@ -24,14 +24,26 @@ class NewsSwipper extends StatelessWidget {
           );
         },
         itemCount: Banners.length,
+        // layout: SwiperLayout.TINDER,
+        // layout: SwiperLayout.STACK,
+        // itemHeight: 180,
+        // itemWidth: 300,
+        // scale: 0.95,
+        scrollDirection: Axis.horizontal,
+        // autoplay: true,
+        // autoplayDelay: 1,
+        // control: new SwiperControl(
+        //   color: Colors.blue
+        // ),
         //指示器
         pagination: new SwiperPagination(
-            builder: DotSwiperPaginationBuilder(color: Colors.grey)),
+            margin: const EdgeInsets.fromLTRB(0, 0, 0, 2),
+            builder: DotSwiperPaginationBuilder(color: Colors.grey,activeColor: Colors.blue)),
       ),
     );
     return Container(
         width: double.infinity,
-        height: 270,
+        height: 200,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(5.0)),
         ),

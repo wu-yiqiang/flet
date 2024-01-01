@@ -62,7 +62,7 @@ class _pageViewWidgetState extends State<_pageViewWidget> {
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               TextButton(
                 onPressed: () {
-                  Get.toNamed(Routes.HOME);
+                  Get.toNamed('/home');
                 },
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith(

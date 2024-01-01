@@ -23,11 +23,10 @@ class HomePage extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       height: double.infinity,
-                      // alignment: Alignment.center,
+                      alignment: Alignment.center,
                       child: WeatherPage(),
                     ),
                     Container(
-                      // color: Colors.red,
                       width: double.infinity,
                       height: double.infinity,
                       alignment: Alignment.center,
