@@ -14,7 +14,13 @@ class WeatherPage extends StatelessWidget {
         leading: SvgPicture.asset("assets/icons/common/menu.svg",
             color: Colors.white),
         backgroundColor: weatherAppbarColor,
-        actions: [Switch()],
+        titleSpacing: 0,
+        actions: [
+          Container(
+            margin: EdgeInsets.only(right: 10),
+            child: Switch(),
+          )
+        ],
       ),
       body: Container(
         padding: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 10),
@@ -52,7 +58,6 @@ class SwitchWidgetState extends State<Switch> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 16),
       child: Row(
         children: [
           ClipRRect(
@@ -190,7 +195,7 @@ class AirInfos extends StatelessWidget {
     {"title": "湿度", "value": "99%"},
     {"title": "能见度", "value": "3.8 公里"},
     {"title": "气压", "value": "1028 hPa"},
-    {"title": "露点", "value": "10°"},
+    {"title": "露点", "value": "10 °"},
   ];
 
   @override
