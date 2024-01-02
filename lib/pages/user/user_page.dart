@@ -6,23 +6,34 @@ class UserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // title: Text("sds"),
         actions: [
-          SvgPicture.asset(
-            "assets/icons/common/scan.svg",
-            height: 30,
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 5),
+            child: SvgPicture.asset(
+              "assets/icons/common/scan.svg",
+              height: 30,
+            ),
           ),
-          SvgPicture.asset(
-            "assets/icons/common/code.svg",
-            height: 30,
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 5),
+            child: SvgPicture.asset(
+              "assets/icons/common/code.svg",
+              height: 30,
+            ),
           ),
-          SvgPicture.asset(
-            "assets/icons/common/setting.svg",
-            height: 30,
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 5),
+            child: SvgPicture.asset(
+              "assets/icons/common/setting.svg",
+              height: 30,
+            ),
           ),
-          SvgPicture.asset(
-            "assets/icons/common/light.svg",
-            height: 30,
+          Container(
+            margin: EdgeInsets.only(left: 5, right: 10),
+            child: SvgPicture.asset(
+              "assets/icons/common/light.svg",
+              height: 30,
+            ),
           ),
         ],
       ),
@@ -50,23 +61,25 @@ class UserInfo extends StatelessWidget {
         children: [
           Row(
             children: [
-              Row(
-                children: [
-                  Avator(),
-                ],
+              Container(
+                margin: EdgeInsets.only(right: 10),
+                child: Row(
+                  children: [
+                    Avator(),
+                  ],
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "Sutter",
-                    style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                   ),
-                  Text(
-                    "这个人很懒，什么也没有留下",
-                    style: TextStyle(fontSize: 14),
-                      maxLines: 1,overflow: TextOverflow.ellipsis
-                  )
+                  Text("这个人很懒，什么也没有留下",
+                      style: TextStyle(fontSize: 14),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis)
                 ],
               )
             ],
@@ -110,124 +123,135 @@ class Datas extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+        Text("常用功能", style: TextStyle(fontSize: 16),),
+        Container(
+          padding: EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                child: Column(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/icons/common/history.svg",
+                      height: 20,
+                    ),
+                    Text("历史记录")
+                  ],
+                ),
+              ),
+              Container(
+                child: Column(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/icons/common/start.svg",
+                      height: 20,
+                    ),
+                    Text("我的收藏")
+                  ],
+                ),
+              ),
+              Container(
+                child: Column(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/icons/common/start.svg",
+                      height: 20,
+                    ),
+                    Text("我的收藏")
+                  ],
+                ),
+              ),
+              Container(
+                child: Column(
+                  children: [
+                    SvgPicture.asset(
+                      "assets/icons/common/start.svg",
+                      height: 20,
+                    ),
+                    Text("我的收藏")
+                  ],
+                ),
+              ),
+            ],
+          ),
+        )
+        
+      ]),
+    );
+  }
+}
+
+class Services extends StatelessWidget {
+  List moreServiceList = [
+    {"icon": "assets/icons/common/kefu.svg", "title": "联系客服"},
+    {"icon": "assets/icons/common/yinsi.svg", "title": "隐私协议"},
+    {"icon": "assets/icons/common/fankui.svg", "title": "用户反馈"}
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // decoration: BoxDecoration(
+      //   borderRadius: BorderRadius.all(Radius.circular(2)),
+      // ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Container(
-            child: Column(
-              children: [
-                SvgPicture.asset(
-                  "assets/icons/common/history.svg",
-                  height: 20,
-                ),
-                Text("历史记录")
-              ],
-            ),
+          Row(
+            children: [
+              Text(
+                "更多服务",
+                style: TextStyle(fontSize: 18),
+              ),
+            ],
           ),
-          Container(
-            child: Column(
-              children: [
-                SvgPicture.asset(
-                  "assets/icons/common/start.svg",
-                  height: 20,
-                ),
-                Text("我的收藏")
-              ],
-            ),
-          ),
-          Container(
-            child: Column(
-              children: [
-                SvgPicture.asset(
-                  "assets/icons/common/start.svg",
-                  height: 20,
-                ),
-                Text("我的收藏")
-              ],
-            ),
-          ),
-          Container(
-            child: Column(
-              children: [
-                SvgPicture.asset(
-                  "assets/icons/common/start.svg",
-                  height: 20,
-                ),
-                Text("我的收藏")
-              ],
-            ),
-          ),
+          Column(
+            children: moreServiceList
+                .map((item) => MoreServiceItem(item: item))
+                .toList(),
+          )
         ],
       ),
     );
   }
 }
 
-class Services extends StatelessWidget {
+class MoreServiceItem extends StatelessWidget {
+  final Map<String, String> item;
+  const MoreServiceItem({Key? key, required this.item}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      // crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Text("更多服务"),
-          ],
-        ),
-        Container(
-          padding: EdgeInsets.all(10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget build(BuildContext buildContext) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  SvgPicture.asset(
-                    "assets/icons/common/kefu.svg",
-                    height: 22,
-                  ),
-                  Text("联系客服")
-                ],
+              SvgPicture.asset(
+                item["icon"]!,
+                height: 22,
               ),
-              Row(
-                children: [
-                  SvgPicture.asset(
-                    "assets/icons/common/goto.svg",
-                    height: 22,
-                  ),
-                ],
+              Container(
+                margin: EdgeInsets.only(left: 8),
+                child: Text(item["title"]!),
               )
             ],
           ),
-        ),
-        Container(
-          padding: EdgeInsets.all(10),
-          // color: Colors.green,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Row(
             children: [
-              Row(
-                children: [
-                  SvgPicture.asset(
-                    "assets/icons/common/yinsi.svg",
-                    height: 22,
-                  ),
-                  Text("隐私协议")
-                ],
+              SvgPicture.asset(
+                "assets/icons/common/goto.svg",
+                height: 22,
               ),
-              Row(
-                children: [
-                  SvgPicture.asset(
-                    "assets/icons/common/goto.svg",
-                    height: 22,
-                  ),
-                ],
-              )
             ],
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }
