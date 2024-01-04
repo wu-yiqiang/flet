@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class UserPage extends StatelessWidget {
   @override
@@ -86,9 +87,15 @@ class UserInfo extends StatelessWidget {
           ),
           Row(
             children: [
-              SvgPicture.asset(
-                "assets/icons/common/edit.svg",
-                height: 20,
+              // SvgPicture.asset(
+              //   "assets/icons/common/edit.svg",
+              //   height: 20,
+              // ),
+              IconButton(
+                onPressed: () {
+                  Get.toNamed("/user-edit");
+                },
+                icon: SvgPicture.asset("assets/icons/common/edit.svg", height: 20,),
               ),
             ],
           )
@@ -123,10 +130,11 @@ class Datas extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-        Text("常用功能", style: TextStyle(fontSize: 16),),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text(
+          "常用功能",
+          style: TextStyle(fontSize: 16),
+        ),
         Container(
           padding: EdgeInsets.all(10),
           child: Row(
@@ -180,7 +188,6 @@ class Datas extends StatelessWidget {
             ],
           ),
         )
-        
       ]),
     );
   }
@@ -205,7 +212,7 @@ class Services extends StatelessWidget {
             children: [
               Text(
                 "更多服务",
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 16),
               ),
             ],
           ),
@@ -227,6 +234,11 @@ class MoreServiceItem extends StatelessWidget {
   Widget build(BuildContext buildContext) {
     return Container(
       padding: EdgeInsets.all(10),
+      color: Colors.grey,
+      margin: EdgeInsets.symmetric(vertical: 1),
+      // decoration: BorderRadius(
+      //   BorderRadius: BorderRadius.circular(10),
+      // ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

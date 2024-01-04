@@ -53,7 +53,7 @@ class NewsLists extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView(
-      padding: EdgeInsets.only(bottom: bottomTabViewHeight),
+      // padding: EdgeInsets.only(bottom: bottomTabViewHeight),
       // padding: EdgeInsets.symmetric(vertical: 0),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1,

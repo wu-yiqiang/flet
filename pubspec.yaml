@@ -11,6 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+#  charts_flutter: ^0.12.0
+#  fl_chart: ^0.66.0
 
 dev_dependencies:
   flutter_test:
@@ -19,6 +21,8 @@ dev_dependencies:
   get: 4.6.0
   cupertino_icons: ^1.0.2
   flutter_svg: ^0.22.0
+#  fl_chart: ^0.66.0
+#  charts_flutter: ^0.12.0
 #  sqflite: ^2.0.0+4
 #  common_utils: ^2.0.2
 #  intl: 0.17.0
