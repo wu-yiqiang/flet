@@ -11,7 +11,7 @@ final double appbarHeight = 45.0;
 final double NavBarIconSize = 30.0;
 
 final List splashIllustrations = [
-  Illustration(assets: 'assets/illustration/start1.svg', copyRight: "资讯"),
-  Illustration(assets: 'assets/illustration/start2.svg', copyRight: "气象"),
-  Illustration(assets: 'assets/illustration/start3.svg', copyRight: "气象")
+  Illustration(assets: 'assets/illustration/start1.svg'),
+  Illustration(assets: 'assets/illustration/start2.svg'),
+  Illustration(assets: 'assets/illustration/start3.svg')
 ];
