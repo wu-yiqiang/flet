@@ -3,8 +3,33 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flet/modules/illustration.dart';
 import 'package:flet/pages/weather/ServiceItem.dart';
 import 'package:flet/common/const.dart';
+import 'package:flet/api/weather.dart';
 
-class WeatherPage extends StatelessWidget {
+class WeatherPage extends StatefulWidget {
+  WeatherPage({Key? key}) : super(key: key);
+
+
+  @override
+  State<StatefulWidget> createState() {
+    return WeatherState();
+  }
+}
+
+class WeatherState extends State<WeatherPage> {
+  String location = "";
+  @override
+  void initState() {
+    super.initState();
+    getInfo();
+  }
+
+  void getInfo() async {
+    var data = await WeatherApi.getWeatherInfo({"location": "上海"});
+    setState(() {
+      location = data["data"]["city"];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +69,7 @@ class WeatherPage extends StatelessWidget {
                   image: AssetImage("assets/weather/CloudyNight.png"),
                   fit: BoxFit.cover)),
           child: Column(children: <Widget>[
-            Location(),
+            Location(location: location),
             Time(),
             WeatherInfo(),
             Expanded(
@@ -164,12 +189,23 @@ class SwitchWidgetState extends State<Switch> {
   }
 }
 
-class Location extends StatelessWidget {
+class Location extends StatefulWidget {
+  Location({Key? key, this.location = "上海"}) : super(key: key);
+  final String location;
+
+  @override
+  State<StatefulWidget> createState() {
+    return LocationState();
+  }
+}
+
+class LocationState extends State<Location> {
+
   @override
   Widget build(BuildContext context) {
     return Row(children: [
       Text(
-        "上海市，静安区",
+      widget.location,
         style: TextStyle(
             fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),
       )

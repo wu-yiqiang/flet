@@ -3,7 +3,7 @@ import 'package:flet/pages/splash/splash_pages.dart';
 import "package:flutter/cupertino.dart";
 import "package:get/get.dart";
 import "package:flet/pages/news/news_page.dart";
-import "package:flet/pages/home/hom.dart";
+import "package:flet/pages/home/home_page.dart";
 import "package:flet/pages/home/home_binding.dart";
 import "package:flet/pages/weather/weather_page.dart";
 import "package:flet/pages/user/user_page.dart";
