@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flet/modules/illustration.dart';
 import 'package:flet/pages/weather/ServiceItem.dart';
 import 'package:flet/common/const.dart';
 import 'package:flet/api/weather.dart';
-
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 class WeatherPage extends StatefulWidget {
   WeatherPage({Key? key}) : super(key: key);
-
 
   @override
   State<StatefulWidget> createState() {
@@ -17,16 +17,25 @@ class WeatherPage extends StatefulWidget {
 
 class WeatherState extends State<WeatherPage> {
   String location = "";
+  Map<String, dynamic> infoMap = {
+    "info": "晴朗",
+    "temperature": "12",
+    "direct": "北风",
+    "power": "2级",
+    "humidity": "99%",
+    "aqi": "是谁",
+  };
   @override
   void initState() {
     super.initState();
-    getInfo();
+    getInfo("上海");
   }
 
-  void getInfo() async {
-    var data = await WeatherApi.getWeatherInfo({"location": "上海"});
+  void getInfo(String addr) async {
+    var data = await WeatherApi.getWeatherInfo({"location": addr});
     setState(() {
-      location = data["data"]["city"];
+      location = data["city"];
+      infoMap = data["realtime"];
     });
   }
 
@@ -49,7 +58,7 @@ class WeatherState extends State<WeatherPage> {
                 },
                 icon: SvgPicture.asset("assets/icons/common/menu.svg",
                     color: Colors.white),
-                iconSize: 50,
+                iconSize: 50.sp,
               );
             },
           ),
@@ -58,7 +67,7 @@ class WeatherState extends State<WeatherPage> {
           actions: [
             Container(
               margin: EdgeInsets.only(right: 10),
-              child: Switch(),
+              child: Switch(getInfo: getInfo),
             )
           ],
         ),
@@ -71,7 +80,7 @@ class WeatherState extends State<WeatherPage> {
           child: Column(children: <Widget>[
             Location(location: location),
             Time(),
-            WeatherInfo(),
+            WeatherInfo(infoMap: infoMap),
             Expanded(
               child: AirInfos(),
             ),
@@ -113,6 +122,8 @@ class WeatherState extends State<WeatherPage> {
 }
 
 class Switch extends StatefulWidget {
+  const Switch({Key? key, this.getInfo}) : super(key: key);
+  final getInfo;
   @override
   State<StatefulWidget> createState() {
     return SwitchWidgetState();
@@ -136,7 +147,7 @@ class SwitchWidgetState extends State<Switch> {
                   topLeft: Radius.circular(borderRadious),
                   bottomLeft: Radius.circular(borderRadious)),
               child: Container(
-                width: 36,
+                width: 36.w,
                 padding: EdgeInsets.all(3),
                 color: !isCel ? activeBgcColor : bgcColor,
                 child: InkWell(
@@ -150,7 +161,7 @@ class SwitchWidgetState extends State<Switch> {
                   child: Text(
                     '℉',
                     style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.w700,
                         color: !isCel ? activeFontColor : fontColor),
                     textAlign: TextAlign.center,
@@ -162,7 +173,7 @@ class SwitchWidgetState extends State<Switch> {
                   topRight: Radius.circular(borderRadious),
                   bottomRight: Radius.circular(borderRadious)),
               child: Container(
-                width: 36,
+                width: 36.w,
                 padding: EdgeInsets.all(3),
                 color: isCel ? activeBgcColor : bgcColor,
                 child: InkWell(
@@ -176,7 +187,7 @@ class SwitchWidgetState extends State<Switch> {
                   child: Text(
                     '℃',
                     style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.w700,
                         color: isCel ? activeFontColor : fontColor),
                     textAlign: TextAlign.center,
@@ -207,7 +218,7 @@ class LocationState extends State<Location> {
       Text(
       widget.location,
         style: TextStyle(
-            fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),
+            fontSize: 18.sp, color: Colors.white, fontWeight: FontWeight.w700),
       )
     ]);
   }
@@ -219,13 +230,23 @@ class Time extends StatelessWidget {
     return Row(children: [
       Text(
         "20:08",
-        style: TextStyle(fontSize: 16, color: Colors.white),
+        style: TextStyle(fontSize: 16.sp, color: Colors.white),
       )
     ]);
   }
 }
 
-class WeatherInfo extends StatelessWidget {
+class WeatherInfo extends StatefulWidget {
+  WeatherInfo({Key? key, this.infoMap = const {}}) : super(key: key);
+  Map<String, dynamic> infoMap = {};
+
+  @override
+  State<StatefulWidget> createState() {
+    return WeatherInfoState();
+  }
+}
+
+class WeatherInfoState extends State<WeatherInfo> {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
@@ -237,7 +258,7 @@ class WeatherInfo extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/weather/ClearNight.png',
-                width: 70,
+                width: 70.w,
               ),
               // SvgPicture.asset("assets/weather/ClearNightV3.svg"),
               Container(
@@ -245,16 +266,16 @@ class WeatherInfo extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        "12",
+                        widget.infoMap["temperature"]!,
                         style: TextStyle(
-                            fontSize: 40,
+                            fontSize: 40.sp,
                             color: Colors.white,
                             fontWeight: FontWeight.w700),
                       ),
                       Text(
                         "°C",
                         style: TextStyle(
-                            fontSize: 40,
+                            fontSize: 40.sp,
                             color: Colors.white,
                             fontWeight: FontWeight.w700),
                       ),
@@ -269,14 +290,14 @@ class WeatherInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "晴朗",
+            widget.infoMap['info']!,
             style: TextStyle(
-                fontSize: 18, color: Colors.white, fontWeight: FontWeight.w700),
+                fontSize: 18.sp, color: Colors.white, fontWeight: FontWeight.w700),
           ),
           Text(
             "体感温度 11°",
             style: TextStyle(
-                fontSize: 16, color: Colors.white, fontWeight: FontWeight.w700),
+                fontSize: 16.sp, color: Colors.white, fontWeight: FontWeight.w700),
           ),
         ],
       ),
@@ -284,7 +305,17 @@ class WeatherInfo extends StatelessWidget {
   }
 }
 
-class AirInfos extends StatelessWidget {
+class AirInfos extends StatefulWidget {
+  AirInfos({Key? key, this.infoMap = const {}}) : super(key: key);
+  Map<String, dynamic> infoMap = {};
+
+  @override
+  State<StatefulWidget> createState() {
+    return AirInfosState();
+  }
+}
+
+class AirInfosState extends State<AirInfos> {
   final listData = [
     {"title": "空气质量", "value": "86"},
     {"title": "风速", "value": "北风 2级"},
@@ -294,6 +325,10 @@ class AirInfos extends StatelessWidget {
     {"title": "露点", "value": "10 °"},
   ];
 
+  @override
+  void initState() {
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return GridView(

@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 import 'dart:convert';
-import 'package:dio/adapter.dart';
 // import 'package:common_utils/common_utils.dart';
-// import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 //代码中 LogUtil 来自于 common_utils 插件，EasyLoading 来自于 flutter_easyloading 插件，可以根据自己的习惯替换。
 
 String StringifyUrlSearch(String path,Map search) {
@@ -38,12 +37,12 @@ class Request {
   // 配置 Dio 实例
   static BaseOptions _options = BaseOptions(
     baseUrl: 'http://192.168.1.4:9527/flet',
-    connectTimeout: 5000,
-    receiveTimeout: 3000,
+    connectTimeout: Duration(milliseconds: 5000),
+    receiveTimeout: Duration(milliseconds: 3000),
     headers: {
       'Accept': 'application/json, */*',
       'Content-Type': 'application/json',
-      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDQ3Mzg3MTAsIm5hbWUiOiJzdXR0ZXIiLCJpc3MiOiJhcHAiLCJuYmYiOjE3MDQ2OTQ1MTB9.K65yR-TkOkyEc6VYyU51nMCv14UtUBfTPwApm6L87qg"
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDQ5MDc0MzYsIm5hbWUiOiJzdXR0ZXIiLCJpc3MiOiJhcHAiLCJuYmYiOjE3MDQ4NjMyMzZ9.qYGo0OspvaiJMYGMSdc1cCs0b62UL6lV1goVpbptG8c"
     },
     contentType: "application/json",
   );
@@ -54,9 +53,7 @@ class Request {
   // _request 是核心函数，所有的请求都会走这里
   static Future<T> _request<T>(String path, {String? method, Map? params, data}) async {
     // restful 请求处理
-    if (params != null) {
-      path = StringifyUrlSearch(path, params);
-    }
+    if (params != null) path = StringifyUrlSearch(path, params);
     // LogUtil.v(data, tag: '发送的数据为：');
     // (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = (client) {
     //     client.badCertificateCallback = (cert, String host, int port) => true;
@@ -68,20 +65,22 @@ class Request {
     //     };
     // };
     try {
+      EasyLoading.show(status: 'loading...');
       Response response = await _dio.request(path,
           data: data, options: Options(method: method));
+      EasyLoading.dismiss();
       if (response.statusCode == 200 || response.statusCode == 201) {
         try {
           if (response.data['code'] != 200) {
             // LogUtil.v(response.data['status'], tag: '服务器错误，状态码为：');
-            // EasyLoading.showInfo('服务器错误，状态码为：${response.data['status']}');
+            EasyLoading.showError('服务器错误，状态码为：${response.data['status']}');
             return Future.error(response.data['message']);
           } else {
             // LogUtil.v(response.data, tag: '响应的数据为：');
             if (response.data is Map) {
-              return response.data;
+              return json.decode(response.data["data"]);
             } else {
-              return json.decode(response.data.toString());
+              return json.decode(response.data["data"].toString());
             }
           }
         } catch (e) {
@@ -90,23 +89,22 @@ class Request {
         }
       } else {
        //  LogUtil.v(response.statusCode, tag: 'HTTP错误，状态码为：');
-        // EasyLoading.showInfo('HTTP错误，状态码为：${response.statusCode}');
+        EasyLoading.showError('HTTP错误，状态码为：${response.statusCode},');
         _handleHttpError(response.statusCode!);
         return Future.error('HTTP错误');
       }
     } on DioError catch (e, s) {
       // LogUtil.v(_dioError(e), tag: '请求异常');
-      // EasyLoading.showInfo(_dioError(e));
+      EasyLoading.showError(_dioError(e));
       return Future.error(_dioError(e));
     } catch (e, s) {
-     //  LogUtil.v(e, tag: '未知异常');
+     // LogUtil.v(e, tag: '未知异常');
       return Future.error('未知异常');
     }
   }
 
   // 处理 Dio 异常
   static String _dioError(DioError error) {
-    print(error);
     switch (error.type) {
       case DioErrorType.CONNECT_TIMEOUT:
         return "网络连接超时，请检查网络设置";
@@ -171,7 +169,7 @@ class Request {
       default:
         message = '请求失败，错误码：$errorCode';
     }
-    // EasyLoading.showError(message);
+    EasyLoading.showError(message);
   }
 
   static Future<T> get<T>(String path, {Map? params}) {
