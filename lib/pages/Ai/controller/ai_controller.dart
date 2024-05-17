@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-class NavbarController extends GetxController {
+class ImController extends GetxController {
   final CounterState state = CounterState();
   @override
   void onReady() {
