@@ -8,19 +8,13 @@ import 'package:flet/pages/Ai/ai.dart';
 
 class HomePage extends StatelessWidget {
   HomeController homeController = Get.put(HomeController(), permanent: true);
-  final PageController _controller = PageController(
-    initialPage: 0
-  );
   @override
   Widget build(BuildContext context) {
-    print({"煞笔", homeController.currentIndex});
     return Scaffold(
       body: SafeArea(
         child: PageView(
-          controller: _controller,
           onPageChanged: (index) => {
             homeController.setCurrent(index)
-            // _controller.initialPage = index
           },
           children: [
             MoviesPage(),
@@ -37,6 +31,7 @@ class HomePage extends StatelessWidget {
         selectedFontSize: 18,
         unselectedFontSize: 16,
         onTap: (index) => {
+          homeController.setCurrent(index)
         },
         items: [
           BottomNavigationBarItem(
