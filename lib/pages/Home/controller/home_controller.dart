@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 class HomeController extends GetxController {
-  var currentIndex = 0.obs;
+  RxInt currentIndex = 0.obs;
   void setCurrent(No) {
-    currentIndex = No;
+    currentIndex.value = No;
   }
   @override
   void onReady() {
