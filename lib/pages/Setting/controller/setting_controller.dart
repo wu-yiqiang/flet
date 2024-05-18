@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-class MoviesController extends GetxController {
+class SettingController extends GetxController {
   final CounterState state = CounterState();
   @override
   void onReady() {

@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 class HomeController extends GetxController {
-  final CounterState state = CounterState();
+  var currentIndex = 0.obs;
+  void setCurrent(No) {
+    currentIndex = No;
+  }
   @override
   void onReady() {
     // TODO: implement onReady
@@ -11,12 +14,5 @@ class HomeController extends GetxController {
   void onClose() {
     // TODO: implement onClose
     super.onClose();
-  }
-}
-
-class CounterState {
-  CounterState() {
-    // String title = "萨达达萨达萨达".obs
-    ///Initialize variables
   }
 }
