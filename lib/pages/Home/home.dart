@@ -8,7 +8,6 @@ import 'package:flet/pages/Ai/ai.dart';
 
 class HomePage extends StatelessWidget {
   HomeController homeController = Get.put(HomeController());
-  PageController _pageController = PageController();
   List NavigationList = [
     MoviesPage(),
     ImPage(),
@@ -25,7 +24,14 @@ class HomePage extends StatelessWidget {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: homeController.currentIndex.value,
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: Colors.red,
+          // 显示选中的文字
+          showSelectedLabels: true,
+          // 显示不选中时的文字
+          showUnselectedLabels: false,
+          // 选中颜色
+          selectedItemColor: Color.fromRGBO(18, 150, 219, 1),
+          // 未选中颜色
+          unselectedItemColor: Colors.black,
           selectedFontSize: 18,
           unselectedFontSize: 16,
           onTap: (index) => {
@@ -35,25 +41,25 @@ class HomePage extends StatelessWidget {
             BottomNavigationBarItem(
                 icon: Image.asset("assets/images/movies.png",
                     width: 30, height: 30),
-                activeIcon: Image.asset("assets/images/movies.png",
+                activeIcon: Image.asset("assets/images/moviesAct.png",
                     width: 30, height: 30),
                 label: "观影"),
             BottomNavigationBarItem(
                 icon:
                 Image.asset("assets/images/chat.png", width: 30, height: 30),
                 activeIcon:
-                Image.asset("assets/images/chat.png", width: 30, height: 30),
+                Image.asset("assets/images/chatAct.png", width: 30, height: 30),
                 label: "聊天"),
             BottomNavigationBarItem(
                 icon: Image.asset("assets/images/ai.png", width: 30, height: 30),
                 activeIcon:
-                Image.asset("assets/images/ai.png", width: 30, height: 30),
+                Image.asset("assets/images/aiAct.png", width: 30, height: 30),
                 label: "AI"),
             BottomNavigationBarItem(
                 icon:
                 Image.asset("assets/images/user.png", width: 30, height: 30),
                 activeIcon:
-                Image.asset("assets/images/user.png", width: 30, height: 30),
+                Image.asset("assets/images/userAct.png", width: 30, height: 30),
                 label: "用户")
           ],
         ),

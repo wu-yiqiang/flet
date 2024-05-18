@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+
 class HomeController extends GetxController {
   RxInt currentIndex = 0.obs;
+
   void setCurrent(No) {
     currentIndex.value = No;
   }
@@ -9,6 +11,8 @@ class HomeController extends GetxController {
     // TODO: implement onReady
     super.onReady();
   }
+
+
 
   @override
   void onClose() {

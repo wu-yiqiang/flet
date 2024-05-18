@@ -12,6 +12,5 @@ class AllControllerBinding implements Bindings {
     Get.lazyPut<MoviesController>(() => MoviesController());
     Get.lazyPut<ImController>(() => ImController());
     Get.lazyPut<AiController>(() => AiController());
-    // Get.put<MoviesController>(MoviesController());
   }
 }
