@@ -31,34 +31,12 @@ class HomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        // items: [
-        //   _bottomItem(
-        //     "观影",
-        //     Icons.add,
-        //   ),
-        //   _bottomItem(
-        //     "聊天",
-        //     Icons.add,
-        //   ),
-        //   _bottomItem(
-        //     "AI",
-        //     Icons.add,
-        //   ),
-        //   _bottomItem(
-        //     "sha",
-        //     Icons.close,
-        //   ),
-        // ],
         currentIndex: homeController.currentIndex.value,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.red,
         selectedFontSize: 18,
         unselectedFontSize: 16,
         onTap: (index) => {
-          // setState(() {
-          //       state.currentIndex = index;
-          //   _controller.jumpToPage(index);
-          //     })
         },
         items: [
           BottomNavigationBarItem(
