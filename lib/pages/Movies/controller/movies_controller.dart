@@ -26,7 +26,6 @@ class MoviesController extends GetxController {
     lists.forEach((element) {
       final str = element["types"];
       if (ItemsMap.containsKey(str)) {
-        print({"sssss", str});
         ItemsMap[element['types']].add(element['video_url']);
       } else {
         ItemsMap[element['types']] = [];
