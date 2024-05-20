@@ -13,30 +13,34 @@ class Video extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(4),
             child: Stack(
-              fit: StackFit.passthrough,
+              // fit: StackFit.passthrough,
               children: <Widget>[
-                Image.network(
-                  this.data.img_url,
-                  fit: BoxFit.cover,
-                ),
+                AspectRatio(
+                aspectRatio: 9.0 / 16.0, // 设置宽高比为16:9
+                child: Image.network(
+                this.data.img_url,
+                fit: BoxFit.fitHeight,
+              ))
               ].where((item) => item != null).toList(),
             ),
           ),
         ),
         // Padding(padding: EdgeInsets.only(top: 5)),
-        SizedBox(
-          height: 40,
-          child: Text(
-            this.data.name,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF333333),
+        Container(
+          child: SizedBox(
+            height: 40,
+            child: Text(
+              this.data.name,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Color(0xFF333333),
+              ),
             ),
           ),
-        ),
+        )
       ],
     );
   }

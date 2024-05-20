@@ -13,34 +13,38 @@ class Programme extends StatelessWidget {
   const Programme({Key? key, required this.ProgrammeName, required this.programLists}) : super(key: key);
 
   Widget renderHeader() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Text(
-          this.ProgrammeName,
-          style: TextStyle(
-            fontSize: 20.sp,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF333333),
+    return Container(
+      margin: EdgeInsets.only(top: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+        children: <Widget>[
+          Text(
+            this.ProgrammeName,
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF333333),
+            ),
           ),
-        ),
-        Row(
-          children: <Widget>[
-            Text(
-              '更多',
-              style: TextStyle(
-                fontSize: 14.sp,
-                color: Color(0xFF666666),
+          Row(
+            children: <Widget>[
+              Text(
+                '更多',
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  color: Color(0xFF666666),
+                ),
               ),
-            ),
-            Icon(
-              Icons.keyboard_arrow_right,
-              size: 20.sp,
-              color: Color(0xFF999999),
-            ),
-          ],
-        ),
-      ],
+              Icon(
+                Icons.keyboard_arrow_right,
+                size: 20.sp,
+                color: Color(0xFF999999),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -49,12 +53,11 @@ class Programme extends StatelessWidget {
       shrinkWrap: true,
       itemCount: this.programLists.length,
       physics: NeverScrollableScrollPhysics(),
-      // padding: EdgeInsets.symmetric(horizontal: 16),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10,
-        childAspectRatio: 0.7,
+        // mainAxisSpacing: 2.w,
+        // crossAxisSpacing: 2.w,
+        childAspectRatio: 9 / 16,
       ),
       itemBuilder: (context, index) {
         return Video(data: this.programLists[index]);
