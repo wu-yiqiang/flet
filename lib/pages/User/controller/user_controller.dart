@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-class SettingController extends GetxController {
+class UserController extends GetxController {
   final CounterState state = CounterState();
   @override
   void onReady() {

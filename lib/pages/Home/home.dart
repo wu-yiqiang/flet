@@ -2,7 +2,7 @@ import "package:get/get.dart";
 import 'package:flutter/material.dart';
 import 'package:flet/pages/Home/controller/home_controller.dart';
 import 'package:flet/pages/Movies/movies.dart';
-import 'package:flet/pages/Setting/setting.dart';
+import 'package:flet/pages/User/user.dart';
 import 'package:flet/pages/Im/im.dart';
 import 'package:flet/pages/Ai/ai.dart';
 
@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
     MoviesPage(),
     ImPage(),
     AiPage(),
-    SettingPage(),
+    UserPage(),
   ];
   @override
   Widget build(BuildContext context) {
