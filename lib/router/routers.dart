@@ -4,10 +4,14 @@ import 'package:flet/pages/Home/home.dart';
 // import 'package:flet/pages/Home/binding/home_binding.dart';
 // import 'package:flet/pages/Movies/binding/movies_binding.dart';
 import 'package:flet/pages/Movies/movies.dart';
+import "package:flet/pages/Movies/video.dart";
+import "package:flet/pages/Movies/play.dart";
 abstract class AppPages {
   static final pages = [
     GetPage(name: "/home", page: () => beforeRouter("/home")),
     GetPage(name: "/movies", page: () => beforeRouter("/movies")),
+    GetPage(name: "/video", page: () => beforeRouter("/video")),
+    GetPage(name: "/play", page: () => beforeRouter("/play")),
   ];
 // 命名路由
 }
@@ -19,6 +23,8 @@ Widget beforeRouter(String pageName) {
   // }
   if (pageName == "/home") return HomePage();
   if (pageName == "/movies") return MoviesPage();
+  if (pageName == "/video") return VideoPage();
+  if (pageName == "/play") return PlayPage();
   return HomePage();
 }
 
