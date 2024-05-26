@@ -24,7 +24,7 @@ class Programme extends StatelessWidget {
             style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF333333),
+              // color: Color(0xFF333333),
             ),
           ),
           Row(
@@ -33,7 +33,6 @@ class Programme extends StatelessWidget {
                 'more'.tr,
                 style: TextStyle(
                   fontSize: 14.sp,
-                  color: Color(0xFF666666),
                 ),
               ),
               Icon(

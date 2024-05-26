@@ -31,7 +31,6 @@ class Video extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xFF333333),
                 )
             ),
           )

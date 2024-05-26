@@ -45,40 +45,49 @@ class OptionsBar extends StatelessWidget {
             child: IconButton(
               highlightColor: Colors.transparent,
               splashColor: Colors.transparent,
-              icon: SvgPicture.asset("assets/svg/scanDark.svg"),
+              icon: Obx(() {
+                return userController.isDark.value ? SvgPicture.asset("assets/svg/scanLight.svg") : SvgPicture.asset("assets/svg/scanDark.svg");
+              }),
               onPressed: () {},
             ),
           ),
+          Obx(() {
+            return userController.isDark.value ? Container(
+              height: 40,
+              width: 40,
+              child: IconButton(
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                icon: SvgPicture.asset("assets/svg/moon.svg"),
+                onPressed: () {
+                  Get.changeTheme(ThemeData.light());
+                  userController.setDarkTheme(false);
+                },
+              ),
+            )
+                : Container(
+              height: 40,
+              width: 40,
+              child: IconButton(
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                icon: SvgPicture.asset("assets/svg/sun.svg"),
+                onPressed: () {
+                  Get.changeTheme(ThemeData.dark());
+                  userController.setDarkTheme(true);
+                },
+              ),
+            );
+          }),
           Container(
             height: 40,
             width: 40,
             child: IconButton(
               highlightColor: Colors.transparent,
               splashColor: Colors.transparent,
-              icon: SvgPicture.asset("assets/svg/sun.svg"),
-              onPressed: () {
-              },
-            ),
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            child: IconButton(
-              highlightColor: Colors.transparent,
-              splashColor: Colors.transparent,
-              icon: SvgPicture.asset("assets/svg/light.svg"),
-              onPressed: () {
-
-              },
-            ),
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            child: IconButton(
-              highlightColor: Colors.transparent,
-              splashColor: Colors.transparent,
-              icon: SvgPicture.asset("assets/svg/globalDark.svg"),
+              icon: Obx(() {
+                return userController.isDark.value ? SvgPicture.asset("assets/svg/globalLight.svg") : SvgPicture.asset("assets/svg/globalDark.svg");
+              }),
               onPressed: () {
                 if (userController.isChinese.value) {
                   messagesController.changeLanguage('en', "US");
@@ -146,7 +155,8 @@ class userInfo extends StatelessWidget {
                       child: Text("看歌梭哈", style: TextStyle(fontSize: 16.sp)),
                     ),
                     Container(
-                      child: Text("这个人很懒，什么也没有留下", style: TextStyle(fontSize: 14.sp)),
+                      child: Text("这个人很懒，什么也没有留下",
+                          style: TextStyle(fontSize: 14.sp)),
                     ),
                   ],
                 ),
@@ -175,7 +185,10 @@ class userInfo extends StatelessWidget {
 
 class userBanner extends StatelessWidget {
   UserController userController = Get.put(UserController());
-  List<String> iconList = ["assets/svg/record.svg","assets/svg/start.svg",];
+  List<String> iconList = [
+    "assets/svg/record.svg",
+    "assets/svg/start.svg",
+  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -189,6 +202,7 @@ class userBanner extends StatelessWidget {
       ),
     );
   }
+
   List<Widget> _listView() {
     return iconList
         .map(
@@ -202,10 +216,9 @@ class userBanner extends StatelessWidget {
               onPressed: () {},
             ),
           ),
-    )
+        )
         .toList();
   }
-
 }
 
 class userOther extends StatelessWidget {
@@ -217,10 +230,17 @@ class userOther extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [Text('more-services'.tr, style: TextStyle(
-          fontSize: 14.sp,
-          color: Colors.black,
-        ),),Item(), Item()],
+        children: [
+          Text(
+            'more-services'.tr,
+            style: TextStyle(
+              fontSize: 14.sp,
+              // color: Colors.black,
+            ),
+          ),
+          Item(),
+          Item()
+        ],
       ),
     );
   }
@@ -244,9 +264,7 @@ class userOther extends StatelessWidget {
                 ),
                 margin: EdgeInsets.only(right: 10),
               ),
-              Container(
-                child: Text("asdas")
-              )
+              Container(child: Text("asdas"))
             ],
           ),
           Row(

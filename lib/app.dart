@@ -16,7 +16,10 @@ Widget createApp() {
       getPages: AppPages.pages,
       translations: Messages(),
       // theme: AppTheme.theme(),
-      theme: Get.isDarkMode ? ThemeData.dark() : ThemeData.light(),
+      theme:  ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.light,
+      // theme: Get.isDarkMode ? ThemeData.dark() : ThemeData.light(),
       locale: Locale('zh', 'CN'), //设置默认语言
       fallbackLocale: Locale("zh", "CN"), // 在配置错误的情况下,使用的语言
       // builder: EasyLoading.init(),
