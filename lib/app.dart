@@ -15,6 +15,8 @@ Widget createApp() {
       transitionDuration: Duration(milliseconds: 200),
       getPages: AppPages.pages,
       translations: Messages(),
+      // theme: AppTheme.theme(),
+      theme: Get.isDarkMode ? ThemeData.dark() : ThemeData.light(),
       locale: Locale('zh', 'CN'), //设置默认语言
       fallbackLocale: Locale("zh", "CN"), // 在配置错误的情况下,使用的语言
       // builder: EasyLoading.init(),

@@ -66,6 +66,18 @@ class OptionsBar extends StatelessWidget {
             child: IconButton(
               highlightColor: Colors.transparent,
               splashColor: Colors.transparent,
+              icon: SvgPicture.asset("assets/svg/light.svg"),
+              onPressed: () {
+
+              },
+            ),
+          ),
+          Container(
+            height: 40,
+            width: 40,
+            child: IconButton(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
               icon: SvgPicture.asset("assets/svg/globalDark.svg"),
               onPressed: () {
                 if (userController.isChinese.value) {
