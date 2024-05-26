@@ -1,11 +1,15 @@
+import 'dart:ffi';
+
 import "package:get/get.dart";
 import 'package:flutter/material.dart';
+import 'package:flet/translation/translation_controller.dart';
 import 'package:flet/pages/User/controller/user_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class UserPage extends StatelessWidget {
   UserController userController = Get.put(UserController());
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,6 +24,8 @@ class UserPage extends StatelessWidget {
 
 class OptionsBar extends StatelessWidget {
   UserController userController = Get.put(UserController());
+  MessagesController messagesController = Get.put(MessagesController());
+
   List<String> listArrray = [
     "assets/svg/scanDark.svg",
     "assets/svg/sun.svg",
@@ -32,7 +38,47 @@ class OptionsBar extends StatelessWidget {
       padding: EdgeInsets.all(2.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
-        children: _listView(),
+        children: [
+          Container(
+            height: 40,
+            width: 40,
+            child: IconButton(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              icon: SvgPicture.asset("assets/svg/scanDark.svg"),
+              onPressed: () {},
+            ),
+          ),
+          Container(
+            height: 40,
+            width: 40,
+            child: IconButton(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              icon: SvgPicture.asset("assets/svg/sun.svg"),
+              onPressed: () {
+              },
+            ),
+          ),
+          Container(
+            height: 40,
+            width: 40,
+            child: IconButton(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              icon: SvgPicture.asset("assets/svg/globalDark.svg"),
+              onPressed: () {
+                if (userController.isChinese.value) {
+                  messagesController.changeLanguage('en', "US");
+                  userController.setCurrentLang(false);
+                } else {
+                  messagesController.changeLanguage('zh', "CN");
+                  userController.setCurrentLang(true);
+                }
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -159,7 +205,7 @@ class userOther extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [Text("更多服务", style: TextStyle(
+        children: [Text('more-services'.tr, style: TextStyle(
           fontSize: 14.sp,
           color: Colors.black,
         ),),Item(), Item()],

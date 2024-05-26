@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class Video extends StatelessWidget {
   final VideoViewModel data;
 
@@ -13,36 +14,25 @@ class Video extends StatelessWidget {
       },
       child: Column(
         children: <Widget>[
-          Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(4),
-              child: Stack(
-                // fit: StackFit.passthrough,
-                children: <Widget>[
-                  AspectRatio(
-                      aspectRatio: 9.0 / 16.0, // 设置宽高比为16:9
-                      child: Image.network(
-                        this.data.img_url,
-                        fit: BoxFit.fitHeight,
-                      ))
-                ].where((item) => item != null).toList(),
-              ),
-            ),
-          ),
-          // Padding(padding: EdgeInsets.only(top: 5)),
           Container(
-            child: SizedBox(
-              height: 40,
-              child: Text(
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(6)),
+                child: Image.network(
+                  this.data.img_url,
+                  fit: BoxFit.fitWidth,
+                )
+              ),
+          ),
+          Container(
+            child: Text(
                 this.data.name,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w500,
                   color: Color(0xFF333333),
-                ),
-              ),
+                )
             ),
           )
         ],

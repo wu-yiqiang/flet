@@ -30,7 +30,7 @@ class Programme extends StatelessWidget {
           Row(
             children: <Widget>[
               Text(
-                '更多',
+                'more'.tr,
                 style: TextStyle(
                   fontSize: 14.sp,
                   color: Color(0xFF666666),
@@ -54,10 +54,10 @@ class Programme extends StatelessWidget {
       itemCount: this.programLists.length,
       physics: NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        // mainAxisSpacing: 2.w,
-        // crossAxisSpacing: 2.w,
-        childAspectRatio: 9 / 16,
+        crossAxisCount: 2,
+        mainAxisSpacing: 0,
+        crossAxisSpacing: 5.w,
+        // childAspectRatio: 9 / 16,
       ),
       itemBuilder: (context, index) {
         return Video(data: this.programLists[index]);

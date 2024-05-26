@@ -91,7 +91,7 @@ class VideoPage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.max,
-        //交叉轴的布局方式，对于column来说就是水平方向的布局方式
+        // 交叉轴的布局方式，对于column来说就是水平方向的布局方式
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(

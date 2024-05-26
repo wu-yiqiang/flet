@@ -6,10 +6,12 @@ class Messages extends Translations {
   // TODO: implement keys
   Map<String, Map<String, String>> get keys => {
     'zh_CN': {
-      'hello': "你好, 世界"
-    },  
+      'more': "更多",
+      "more-services": "更多服务",
+    },
     'en_US': {
-      'hello': 'hello world'
+      'more': "more",
+      "more-services": "more services",
     }
   };
 }
