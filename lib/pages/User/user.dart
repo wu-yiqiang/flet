@@ -45,6 +45,18 @@ class OptionsBar extends StatelessWidget {
             child: IconButton(
               highlightColor: Colors.transparent,
               splashColor: Colors.transparent,
+              icon: SvgPicture.asset("assets/svg/scanLight.svg"),
+              onPressed: () {
+                Get.toNamed("/login");
+              },
+            ),
+          ),
+          Container(
+            height: 40,
+            width: 40,
+            child: IconButton(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
               icon: Obx(() {
                 return userController.isDark.value ? SvgPicture.asset("assets/svg/scanLight.svg") : SvgPicture.asset("assets/svg/scanDark.svg");
               }),
