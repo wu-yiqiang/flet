@@ -10,6 +10,23 @@ import 'package:flet/pages/Ai/ai.dart';
 class HomePage extends StatelessWidget {
   HomeController homeController = Get.put(HomeController());
   MessagesController messagesController = Get.put(MessagesController());
+  List BottomArray = [{
+    "icon": "assets/images/movies.png",
+    "activeIcon": "assets/images/moviesAct.png",
+    "label": "观影",
+  }, {
+    "icon": "assets/images/chat.png",
+    "activeIcon": "assets/images/chatAct.png",
+    "label": "聊天",
+  }, {
+    "icon": "assets/images/ai.png",
+    "activeIcon": "assets/images/aiAct.png",
+    "label": "AI",
+  }, {
+    "icon": "assets/images/user.png",
+    "activeIcon": "assets/images/userAct.png",
+    "label": "用户",
+  }];
   List NavigationList = [
     MoviesPage(),
     ImPage(),
@@ -39,38 +56,17 @@ class HomePage extends StatelessWidget {
           onTap: (index) => {
             homeController.setCurrent(index),
           },
-          items: [
-            BottomNavigationBarItem(
-                icon: Image.asset("assets/images/movies.png",
-                    width: 30, height: 30),
-                activeIcon: Image.asset("assets/images/moviesAct.png",
-                    width: 30, height: 30),
-                label: "观影"),
-            BottomNavigationBarItem(
-                icon:
-                Image.asset("assets/images/chat.png", width: 30, height: 30),
-                activeIcon:
-                Image.asset("assets/images/chatAct.png", width: 30, height: 30),
-                label: "聊天"),
-            BottomNavigationBarItem(
-                icon: Image.asset("assets/images/ai.png", width: 30, height: 30),
-                activeIcon:
-                Image.asset("assets/images/aiAct.png", width: 30, height: 30),
-                label: "AI"),
-            BottomNavigationBarItem(
-                icon:
-                Image.asset("assets/images/user.png", width: 30, height: 30),
-                activeIcon:
-                Image.asset("assets/images/userAct.png", width: 30, height: 30),
-                label: "用户")
-          ],
+          items: this._listBottomNavigationBarItem(),
         ),
       );
     });
   }
 
-  BottomNavigationBarItem _bottomItem(String title, IconData icon) {
-    return BottomNavigationBarItem(
-        icon: Icon(icon), activeIcon: Icon(icon), label: title);
+  List<BottomNavigationBarItem> _listBottomNavigationBarItem() {
+    return BottomArray.map((k) => BottomNavigationBarItem(
+        icon: Image.asset(k["icon"], width: 30, height: 30),
+        activeIcon:
+        Image.asset(k["activeIcon"], width: 30, height: 30),
+        label: k["label"])).toList();
   }
 }
