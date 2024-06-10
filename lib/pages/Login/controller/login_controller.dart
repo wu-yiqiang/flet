@@ -15,4 +15,10 @@ class LoginController extends GetxController {
     // TODO: implement onClose
     super.onClose();
   }
+  void setUsername(String user) {
+    username.value = user;
+  }
+  void setPassword(String p) {
+    password.value = p;
+  }
 }

@@ -29,6 +29,9 @@ class LoginPage extends StatelessWidget {
                   ),
                   SizedBox(height: 50),
                   TextField(
+                    onChanged: (val) {
+                      loginController.setUsername(val);
+                    },
                     autofocus: true,
                     decoration: InputDecoration(
                         labelText: 'username'.tr,
@@ -38,6 +41,10 @@ class LoginPage extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   TextField(
+                    onChanged: (val) {
+                      loginController.setPassword(val);
+
+                    },
                     decoration: InputDecoration(
                         labelText: "password".tr,
                         hintText: "password-tips".tr,
@@ -59,7 +66,18 @@ class LoginPage extends StatelessWidget {
                         icon: SvgPicture.asset("assets/svg/login.svg",
                             width: 26, height: 26),
                         label: Text("login".tr),
-                        onPressed: () {},
+                        onPressed: () {
+                          final username = loginController.username;
+                          final password = loginController.password;
+                          if (username.isEmpty) {
+                            Get.snackbar("校验失败", "请输入用户名");
+                            return;
+                          }
+                          if (password.isEmpty) {
+                            Get.snackbar("校验失败", "请输入密码");
+                            return;
+                          }
+                        },
                       ),
                     ],
                   )
