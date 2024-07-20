@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
-  RxString username = "".obs;
-  RxString password = "".obs;
+  RxString username = "root".obs;
+  RxString password = "root".obs;
 
   @override
   void onReady() {

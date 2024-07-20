@@ -36,7 +36,7 @@ enum DioErrorType {
 class Request {
   // 配置 Dio 实例
   static BaseOptions _options = BaseOptions(
-    baseUrl: 'http://192.168.110.101:9527/flet',
+    baseUrl: 'http://192.168.110.101:8080/flet',
     connectTimeout: Duration(seconds: 30),
     receiveTimeout: Duration(seconds: 10),
     headers: {
